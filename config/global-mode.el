@@ -100,6 +100,11 @@
 (evil-mode 1)
 (turn-on-evil-mode)
 
+(leaf which-key
+  :ensure t
+  :config
+  (which-key-mode 1))
+
 (leaf doom-themes
   :ensure t
   :config
