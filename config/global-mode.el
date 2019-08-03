@@ -87,7 +87,8 @@
   :bind
   ((:evil-normal-state-map
     ("J" . next-line-fast)
-    ("K" . prvious-line-fast))
+    ("K" . prvious-line-fast)
+    ("g J" . evil-join))
    (:evil-normal-state-map
     ("C-h" . windmove-left)
     ("C-j" . windmove-down)
