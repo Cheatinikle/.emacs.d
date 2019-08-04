@@ -54,6 +54,7 @@
     (leaf el-get :ensure t
       :custom ((el-get-git-shallow-clone  . t)))))
 
+(setenv "GIT_ASKPASS" "git-gui--askpass")
 
 (defun load-directory (dir)
   (let ((load-it (lambda (f) (load-file (concat (file-name-as-directory dir) f)))))
