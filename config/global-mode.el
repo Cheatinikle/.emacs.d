@@ -101,6 +101,26 @@
 (evil-mode 1)
 (turn-on-evil-mode)
 
+(leaf evil-paredit
+  :require evil-paredit
+  :ensure t
+  :bind
+  (:evil-paredit-mode-map
+   ("<C-right>" . paredit-forward-slurp-sexp)
+   ("<C-left>" . paredit-forward-barf-sexp)
+   ("M-(" . paredit-wrap-round)
+   ("C-M-f" . paredit-forward)
+   ("C-M-b" . paredit-backward)
+   ("C-M-d" . paredit-forward-down)
+   ("C-M-u" . paredit-backward-up)
+   ("C-M-p" . paredit-backward-down)
+   ("C-M-n" . paredit-forward-up)
+   ("<M-up>" . paredit-splice-sexp-killing-backward)
+   ("<M-down>" . paredit-splice-sexp-killing-forward)
+   ("M-s" . paredit-splice-sexp)
+   ("M-S" . paredit-split-sexp)
+   ("M-J" . paredit-join-sexps)))
+
 (leaf which-key
   :ensure t
   :config
