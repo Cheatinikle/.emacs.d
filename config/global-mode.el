@@ -30,7 +30,7 @@
   :config
   (ivy-mode 1)
   (setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy))))
+	'((t . ivy--regex-fuzzy))))
 
 (leaf smex
   :require t
@@ -85,16 +85,16 @@
   :ensure t
   :bind
   ((:evil-normal-state-map
-    ("J" . next-line-fast)
-    ("K" . prvious-line-fast)
-    ("g J" . evil-join)
-    ("C-u" . evil-scroll-up)
-    ("C-h" . windmove-left)
-    ("C-j" . windmove-down)
-    ("C-k" . windmove-up)
-	("C-l" . windmove-right))
-   (:evil-visual-state-map
-    ("C-u" . evil-scroll-up))))
+	 ("J" . next-line-fast)
+	 ("K" . prvious-line-fast)
+	 ("g J" . evil-join)
+	 ("C-u" . evil-scroll-up)
+	 ("C-h" . windmove-left)
+	 ("C-j" . windmove-down)
+	 ("C-k" . windmove-up)
+	 ("C-l" . windmove-right))
+	(:evil-visual-state-map
+	  ("C-u" . evil-scroll-up))))
 
 (leaf evil-paredit
   :require evil-paredit
@@ -192,23 +192,23 @@
 
 ;; font settings
 (if (string-equal system-type "gnu/linux") 
-    (if(member "Consolas" (font-family-list))
+  (if(member "Consolas" (font-family-list))
 	(progn
 	  (add-to-list 'initial-frame-alist '(font . "Consolas")); Monaco
 	  (add-to-list 'default-frame-alist '(font . "Consolas")))
-      (progn
-	(add-to-list 'initial-frame-alist
-		     '(font . "DejaVu Sans Mono-10"))
-	(add-to-list 'default-frame-alist
-		     '(font . "DejaVu Sans Mono-10")))))
+	(progn
+	  (add-to-list 'initial-frame-alist
+		'(font . "DejaVu Sans Mono-10"))
+	  (add-to-list 'default-frame-alist
+		'(font . "DejaVu Sans Mono-10")))))
 
 ;; emacs scroll setting
 (setq scroll-margin 1
-      scroll-conservatively 10000
-      scroll-up-aggressively 0.5
-      scroll-down-aggressively 0.5
-      mouse-wheel-scroll-amount '(3 ((shift). 1))
-      mouse-wheel-progressive-speed nil)
+  scroll-conservatively 10000
+  scroll-up-aggressively 0.5
+  scroll-down-aggressively 0.5
+  mouse-wheel-scroll-amount '(3 ((shift). 1))
+  mouse-wheel-progressive-speed nil)
 
 (defun lsp-company-backend()
   (add-to-list 'company-backends 'company-lsp))
@@ -265,7 +265,7 @@
 (leaf dabbrev
   :ensure t
   :bind
-    ("C-SPC" . dabbrev-expand))
+  ("C-SPC" . dabbrev-expand))
 
 (leaf evil-avy
   :ensure t
