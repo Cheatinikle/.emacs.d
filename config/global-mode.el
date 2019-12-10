@@ -278,7 +278,12 @@
   :ensure t
   :hook ((emacs-lisp-mode-hook clojure-mode-hook) . evil-lispy-mode))
 
+(leaf projectile
+  :ensure t
+  :bind ("C-c p" . projectile-command-map))
+
 (evil-mode 1)
+(projectile-mode 1)
 (turn-on-evil-mode)
 
 (setq-default indent-line-function 4)
