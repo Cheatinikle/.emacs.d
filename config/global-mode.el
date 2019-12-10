@@ -274,6 +274,10 @@
   (:evil-normal-state-map
 	([remap evil-search-backward] . evil-avy-goto-char-timer)))
 
+(leaf evil-lispy
+  :ensure t
+  :hook ((emacs-lisp-mode-hook clojure-mode-hook) . evil-lispy-mode))
+
 (evil-mode 1)
 (turn-on-evil-mode)
 
