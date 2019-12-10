@@ -1,4 +1,3 @@
-
 ;; Red-Portal/.emacs.d Red-Portal's personal emacs settings. 
 ;; Copyright (C) 2017 Red-Portal 
 ;;
@@ -88,38 +87,35 @@
   ((:evil-normal-state-map
     ("J" . next-line-fast)
     ("K" . prvious-line-fast)
-    ("g J" . evil-join))
-   (:evil-normal-state-map
+    ("g J" . evil-join)
+    ("C-u" . evil-scroll-up)
     ("C-h" . windmove-left)
     ("C-j" . windmove-down)
     ("C-k" . windmove-up)
-    ("C-l" . windmove-right)))
-  :config
-  (evil-mode 1)
-  (turn-on-evil-mode))
-
-(evil-mode 1)
-(turn-on-evil-mode)
+	("C-l" . windmove-right))
+   (:evil-visual-state-map
+    ("C-u" . evil-scroll-up))))
 
 (leaf evil-paredit
   :require evil-paredit
   :ensure t
   :bind
   (:evil-paredit-mode-map
-   ("<C-right>" . paredit-forward-slurp-sexp)
-   ("<C-left>" . paredit-forward-barf-sexp)
-   ("M-(" . paredit-wrap-round)
-   ("C-M-f" . paredit-forward)
-   ("C-M-b" . paredit-backward)
-   ("C-M-d" . paredit-forward-down)
-   ("C-M-u" . paredit-backward-up)
-   ("C-M-p" . paredit-backward-down)
-   ("C-M-n" . paredit-forward-up)
-   ("<M-up>" . paredit-splice-sexp-killing-backward)
-   ("<M-down>" . paredit-splice-sexp-killing-forward)
-   ("M-s" . paredit-splice-sexp)
-   ("M-S" . paredit-split-sexp)
-   ("M-J" . paredit-join-sexps)))
+	("<C-right>" . paredit-forward-slurp-sexp)
+    ("<C-left>" . paredit-forward-barf-sexp)
+    ("M-(" . paredit-wrap-round)
+	("C-M-k" . paredit-kill)
+    ("C-M-f" . paredit-forward)
+    ("C-M-b" . paredit-backward)
+    ("C-M-d" . paredit-forward-down)
+    ("C-M-u" . paredit-backward-up)
+    ("C-M-p" . paredit-backward-down)
+    ("C-M-n" . paredit-forward-up)
+    ("<M-up>" . paredit-splice-sexp-killing-backward)
+    ("<M-down>" . paredit-splice-sexp-killing-forward)
+    ("M-s" . paredit-splice-sexp)
+    ("M-S" . paredit-split-sexp)
+    ("M-J" . paredit-join-sexps)))
 
 (leaf which-key
   :ensure t
@@ -246,24 +242,47 @@
   :ensure t
   :bind
   (:evil-visual-state-map
-   ("R" . evil-multiedit-match-all)
-   ("C-M-D" . evil-multiedit-restore)
-   ("M-d" . evil-multiedit-and-next)
-   ("M-D" . evil-multiedit-and-prev))
+    ("R" . evil-multiedit-match-all)
+    ("C-M-D" . evil-multiedit-restore)
+    ("M-d" . evil-multiedit-and-next)
+    ("M-D" . evil-multiedit-and-prev))
   (:evil-normal-state-map
-   ("M-d" . evil-multiedit-match-and-next)
-   ("M-D" . evil-multiedit-match-and-prev))
+    ("M-d" . evil-multiedit-match-and-next)
+    ("M-D" . evil-multiedit-match-and-prev))
   (:evil-insert-state-map
-   ("M-d" . evil-multiedit-toggle-marker-here))
+    ("M-d" . evil-multiedit-toggle-marker-here))
   (:evil-multiedit-state-map
-   ("RET" . evil-multiedit-toggle-or-restrict-region))
+    ("RET" . evil-multiedit-toggle-or-restrict-region))
   (:evil-motion-state-map
-   ("RET" . evil-multiedit-toggle-or-restrict-region))
+    ("RET" . evil-multiedit-toggle-or-restrict-region))
   (:evil-multiedit-state-map
-   ("C-n" . evil-multiedit-next)
-   ("C-p" . evil-multiedit-prev))
+    ("C-n" . evil-multiedit-next)
+    ("C-p" . evil-multiedit-prev))
   (:evil-multiedit-insert-state-map
-   ("C-n" . evil-multiedit-next)
-   ("C-p" . evil-multiedit-prev)))
+    ("C-n" . evil-multiedit-next)
+    ("C-p" . evil-multiedit-prev)))
+
+(leaf dabbrev
+  :ensure t
+  :bind
+    ("C-SPC" . dabbrev-expand))
+
+(leaf evil-avy
+  :ensure t
+  :hook (evil-mode-hook . evil-avy-mode)
+  :bind
+  (:evil-normal-state-map
+	([remap evil-search-backward] . evil-avy-goto-char-timer)))
+
+(evil-mode 1)
+(turn-on-evil-mode)
+
+(setq-default indent-line-function 4)
+(setq-default tab-width 4)
+(setq-default c-basic-offset 4)
+(setq-default lisp-indent-offset 2)
+(setq-default sgml-basic-offset 4)
+(setq-default nxml-child-indent 4)
+(setq tab-stop-list (number-sequence 4 200 4))
 
 (global-set-key (kbd "S-SPC") 'toggle-input-method)
