@@ -276,7 +276,7 @@
 
 (leaf lispy
   :ensure t
-  :hook ((emacs-lisp-mode-hook clojure-mode-hook) . lispy-mode))
+  :hook (evil-insert-state-entry-hook . lispy-mode))
 
 (leaf evil-lispy
   :ensure t
